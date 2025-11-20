@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "random-user-agent"         # название пакета для pip/PyPI
+version = "0.1.0"                  # ОБЯЗАТЕЛЬНО
+description = "Random user-agent provider"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+    { name = "Nikita" },
+]
+
+# если зависимостей нет, можно оставить пустой список
+dependencies = []
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+random_user_agent = ["agents.txt"]
