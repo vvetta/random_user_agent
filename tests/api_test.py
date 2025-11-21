@@ -57,3 +57,13 @@ def test_get_random_modile_agent():
 
     del_temp_file(temp_file_w_agents)
 
+
+def test_get_random_desktop_agent_benchmark(benchmark):
+    ua = RandomUserAgent()
+    benchmark(ua.get_random_desktop_agent)
+
+
+def test_get_random_mobile_agent_benchmark(benchmark):
+    ua = RandomUserAgent()
+    benchmark(ua.get_random_mobile_agent)
+
