@@ -8,6 +8,7 @@ class RandomUserAgent():
     def __init__(self, file_w_agents: Optional[str] = None):
         self._user_filename = file_w_agents
         self._base_filename = "agents.txt"
+        self._agents = self._load_agents()
 
 
     def _load_agents(self) -> List[str]:
@@ -24,14 +25,13 @@ class RandomUserAgent():
                                  windows: bool = True, 
                                  linux: bool = True) -> str:
 
-        agents: List[str] = self._load_agents()
 
-        if not agents:
+        if not self._agents:
             raise RuntimeError("Agents not loaded!")
 
         while True:
-            random_idx: int = random.randint(0, len(agents) - 1)
-            value: str = agents[random_idx]
+            random_idx: int = random.randint(0, len(self._agents) - 1)
+            value: str = self._agents[random_idx]
 
             if "Android" in value or "CriOS" in value:
                 continue
@@ -47,14 +47,12 @@ class RandomUserAgent():
     
 
     def get_random_mobile_agent(self, android: bool = True, ios: bool = True) -> str:
-        agents: List[str] = self._load_agents()
-
-        if not agents:
+        if not self._agents:
             raise RuntimeError("Agents not loaded!")
 
         while True:
-            random_idx: int = random.randint(0, len(agents) - 1)
-            value: str = agents[random_idx]
+            random_idx: int = random.randint(0, len(self._agents) - 1)
+            value: str = self._agents[random_idx]
 
             if "Windows" in value or "Macintosh" in value or ("Linux" in value and "Android" not in value):
                 continue
